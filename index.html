@@ -1,22 +1,51 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hy">
 <head>
   <meta charset="UTF-8">
-  <title>Percentage Calculator</title>
+  <title>Տոկոսի Հաշվիչ</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background-color: #f2f2f2;
+      padding: 30px;
+      max-width: 400px;
+      margin: auto;
+    }
+    h2 {
+      text-align: center;
+    }
+    input, button {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      font-size: 16px;
+    }
+    #result {
+      font-weight: bold;
+      text-align: center;
+      margin-top: 20px;
+    }
+  </style>
 </head>
 <body>
-  <h2>Percentage Calculator</h2>
-  <input type="number" id="number" placeholder="Enter number">
-  <input type="number" id="percent" placeholder="Enter percent">
-  <button onclick="calculate()">Calculate</button>
+  <h2>Տոկոսի Հաշվիչ</h2>
+  <input type="number" id="number" placeholder="Մուտքագրեք թիվը">
+  <input type="number" id="percent" placeholder="Մուտքագրեք տոկոսը">
+  <button onclick="calculate()">Հաշվել</button>
   <p id="result"></p>
 
   <script>
     function calculate() {
       const number = parseFloat(document.getElementById('number').value);
       const percent = parseFloat(document.getElementById('percent').value);
+
+      if (isNaN(number) || isNaN(percent)) {
+        document.getElementById('result').innerText = "Խնդրում ենք մուտքագրել ճիշտ տվյալներ։";
+        return;
+      }
+
       const result = (number * percent) / 100;
-      document.getElementById('result').innerText = `${percent}% of ${number} is ${result}`;
+      document.getElementById('result').innerText = `${number}-ի ${percent} տոկոսը հավասար է ${result}`; 
     }
   </script>
 </body>
